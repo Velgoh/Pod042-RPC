@@ -2,6 +2,14 @@
 console.log = function() {};
 console.error = function() {};
 
+// Single instance lock
+const net = require('net');
+const lockServer = net.createServer();
+lockServer.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') process.exit(0);
+});
+lockServer.listen(42042, '127.0.0.1');
+
 const { SMTCMonitor } = require('@coooookies/windows-smtc-monitor');
 const RPC = require('discord-rpc');
 const YTMusic = require('ytmusic-api');
