@@ -1,3 +1,7 @@
+// Override console to prevent EBADF errors in GUI mode
+console.log = function() {};
+console.error = function() {};
+
 const { SMTCMonitor } = require('@coooookies/windows-smtc-monitor');
 const RPC = require('discord-rpc');
 const YTMusic = require('ytmusic-api');
