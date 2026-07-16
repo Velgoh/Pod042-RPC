@@ -127,7 +127,7 @@ async function updatePresence() {
                         try {
                             let exeName = session.sourceAppId.toLowerCase();
                             if (!exeName.endsWith('.exe')) exeName += '.exe';
-                            const output = execSync(`tasklist /v /fi "imagename eq ${exeName}" /fo csv`, {encoding: 'utf8'});
+                            const output = execSync(`tasklist /v /fi "imagename eq ${exeName}" /fo csv`, {encoding: 'utf8', windowsHide: true});
                             isYTM = output.includes('YouTube Music');
                         } catch(e) {}
                         
