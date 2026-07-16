@@ -31,9 +31,10 @@ echo oMyStartShortcut.Save >> "%TMP_VBS%"
 
 :: Stop Menu Shortcut
 echo Set oMyStopShortcut = WshShell.CreateShortcut("%PROGRAMS_FOLDER%\Stop Pod 042.lnk") >> "%TMP_VBS%"
-echo oMyStopShortcut.TargetPath = "taskkill.exe" >> "%TMP_VBS%"
-echo oMyStopShortcut.Arguments = "/F /IM Pod042.exe" >> "%TMP_VBS%"
+echo oMyStopShortcut.TargetPath = "C:\Windows\System32\taskkill.exe" >> "%TMP_VBS%"
+echo oMyStopShortcut.Arguments = "/F /IM Pod042.exe /T" >> "%TMP_VBS%"
 echo oMyStopShortcut.IconLocation = "%DIR%yt-music-rpc\YoRHa3.ico" >> "%TMP_VBS%"
+echo oMyStopShortcut.WindowStyle = 7 >> "%TMP_VBS%"
 echo oMyStopShortcut.Save >> "%TMP_VBS%"
 
 cscript //B "%TMP_VBS%"
