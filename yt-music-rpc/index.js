@@ -151,6 +151,11 @@ async function updatePresence() {
                             // Remove '- Single' or '- EP' from the album name so it looks cleaner
                             finalAlbum = finalAlbum.replace(/(?:\s-\sSingle|\s-\sEP)$/i, '');
                             
+                            // Prevent redundancy: if album matches track title, clear it
+                            if (finalAlbum.toLowerCase() === finalTitle.toLowerCase()) {
+                                finalAlbum = '';
+                            }
+                            
                             const artworkUrl = trackInfo && trackInfo.artworkUrl ? trackInfo.artworkUrl : 'yt_music_logo';
                             
                             console.log(`Updating Discord: ${finalTitle} by ${finalArtist}`);
